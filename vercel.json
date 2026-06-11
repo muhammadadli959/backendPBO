@@ -1,5 +1,4 @@
 {
-  "version": 2,
-  "buildCommand": "cd backendPBO && npm install && npm run build",
-  "outputDirectory": "backendPBO/backend/dist"
+  "buildCommand": "npm run build",
+  "outputDirectory": "backend/dist"
 }
