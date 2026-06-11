@@ -19,6 +19,10 @@ const allowedOrigins = [
   "https://project-uas-pbo.vercel.app"
 ];
 
+app.use(cors({ origin: process.env.CORS_ORIGIN || "*" }));
+app.use(express.json({ limit: "20mb" }));
+app.use(express.urlencoded({ limit: "20mb", extended: true }));
+
 app.use(cors({
   origin: allowedOrigins,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
