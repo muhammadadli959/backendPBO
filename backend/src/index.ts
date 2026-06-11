@@ -14,7 +14,18 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 // Middleware
-app.use(cors({ origin: process.env.CORS_ORIGIN || "*" }));
+const allowedOrigins = [
+  "http://localhost:5173",      
+  "https://project-uas-pbo.vercel.app"
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true
+}));
+
+app.options("*", cors());
 app.use(express.json());
 
 // Health check endpoint
@@ -52,4 +63,3 @@ if (process.env.NODE_ENV !== 'production') {
     console.log(`🔗 Database: ${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`);
   });
 }
-
